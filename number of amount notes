@@ -1,0 +1,9 @@
+a=int(input("enter amount:"))
+n=[500,200,100,50,20,10,5,2,1]
+dict={}
+for i in n:
+    if(a>=i):
+        count=a//i
+        dict[i]=count
+        a=a-(count*i)
+print(dict)    
