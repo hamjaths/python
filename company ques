@@ -1,0 +1,18 @@
+s=[
+    {"name":"irfan","dept":"cse","marks":[30,50,90]},
+    {"name":"yukesh","dept":"cse","marks":[40,70,80]},
+    {"name":"sharf","dept":"ece","marks":[10,80,60]},
+    {"name":"ashwin","dept":"aero","marks":[70,50,100]},
+    {"name":"hamjath","dept":"eee","marks":[20,80,75]}
+    ]
+for i in s:
+    t=sum(i["marks"])
+    avg=t//3
+    i["percentage"]=avg
+s.sort(key=lambda x:x["percentage"],reverse=True)
+p=["FIRST","SECOND","THIRD","FOURTH","FIFTH"]
+j=0
+for j in range(len(s)):
+    name = s[j]["name"]
+    percentage = s[j]["percentage"]
+    print(f"{name} scored {percentage}% --> stands {p[j]}")
