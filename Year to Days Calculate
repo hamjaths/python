@@ -1,0 +1,27 @@
+def find_day(n):
+    a = n - 2000
+    b = a//4
+    c = a-b
+    d = b * 2
+    e = c + d
+    f = e % 7
+    print(f)
+    if(f==0):
+        return "sunday"
+    if(f==1):
+        return "monday"
+    if(f==2):
+        return "tuesday"
+    if(f==3):
+        return "wednesday"
+    if(f==4):
+        return "thursday"
+    if(f==5):
+        return "friday"
+    if(f==6):
+        return "saturday"
+    
+n = int(input("enter the year:"))
+print(find_day(n))    
+
+    
