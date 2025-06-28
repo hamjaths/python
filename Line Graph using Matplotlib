@@ -1,0 +1,48 @@
+import csv
+import matplotlib.pyplot as plt
+from datetime import datetime
+
+weather_data = [
+    ["Date", "Temperature (°C)", "Humidity (%)", "Precipitation (mm)", "Wind Speed (km/h)"],
+    ["2025-06-21", 30, 55, 0, 15],
+    ["2025-06-22", 32, 60, 2, 10],
+    ["2025-06-23", 31, 58, 0, 12],
+    ["2025-06-24", 29, 65, 5, 8],
+    ["2025-06-25", 28, 70, 10, 7],
+]
+
+csv_filename = "weather_data.csv"
+with open(csv_filename, mode="w", newline="") as file:
+    writer = csv.writer(file)
+    writer.writerows(weather_data)
+
+print(f"{csv_filename} file created successfully!")
+
+dates = []
+temperatures = []
+humidity = []
+precipitation = []
+wind_speed = []
+
+with open(csv_filename, mode="r") as file:
+    reader = csv.DictReader(file)
+    for row in reader:
+        dates.append(datetime.strptime(row["Date"], "%Y-%m-%d"))
+        temperatures.append(float(row["Temperature (°C)"]))
+        humidity.append(float(row["Humidity (%)"]))
+        precipitation.append(float(row["Precipitation (mm)"]))
+        wind_speed.append(float(row["Wind Speed (km/h)"]))
+plt.figure(figsize=(10,6))
+plt.plot(dates, temperatures, marker='o', label="Temperature (°C)")
+plt.plot(dates, humidity, marker='s', label="Humidity (%)")
+plt.plot(dates, precipitation, marker='^', label="Precipitation (mm)")
+plt.plot(dates, wind_speed, marker='d', label="Wind Speed (km/h)")
+
+plt.title("Weather Data Over Time")
+plt.xlabel("Date")
+plt.ylabel("Values")
+plt.legend()
+plt.grid(True)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
