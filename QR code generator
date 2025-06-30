@@ -1,0 +1,8 @@
+import qrcode
+msg= "https://github.com/hamjaths/python"
+r = qrcode.QRCode()
+r.add_data(msg)
+r.make(fit=True)
+msg=r.make_image(fill_color="black",black_color="white")
+msg.save("ham.png")
+print("img is saved correctly")
